@@ -5,25 +5,28 @@ using UnityEngine;
 public class TowerPlacement : MonoBehaviour
 {
     GameObject TowerPreviewPrefab;
-    Transform CurrentTower;
+    Transform CurrentTowerPreview;
 
     [SerializeField]
     Color AllowedColor;
     [SerializeField]
     Color DeniedColor;
 
+    public TowerPlacementInfo info;
+
     public void Set(TowerPlacementInfo towerPlacementInfo)
     {
         Debug.Log("Tower placement set");
         TowerPreviewPrefab = towerPlacementInfo.TowerPrefab;
+        info = towerPlacementInfo;
 
-        if (CurrentTower != null)
-            Destroy(CurrentTower.gameObject);
+        if (CurrentTowerPreview != null)
+            Destroy(CurrentTowerPreview.gameObject);
 
         var mousePos = Input.mousePosition;
         //mousePos.z = 2.0; // we want 2m away from the camera position.
         var objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-        CurrentTower = Instantiate(TowerPreviewPrefab, objectPos, Quaternion.identity).transform;
+        CurrentTowerPreview = Instantiate(TowerPreviewPrefab, objectPos, Quaternion.identity).transform;
         SetBorderColor(DeniedColor);
     }
 
@@ -36,7 +39,7 @@ public class TowerPlacement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (CurrentTower != null)
+        if (CurrentTowerPreview != null)
         {
             //Vector3 m = Input.mousePosition;
             //m = new Vector3(m.x, m.y, transform.position.y);
@@ -45,14 +48,14 @@ public class TowerPlacement : MonoBehaviour
             var mousePos = Input.mousePosition;
             //mousePos.z = 2.0; // we want 2m away from the camera position.
             var p = Camera.main.ScreenToWorldPoint(mousePos);
-            CurrentTower.position = new Vector3(p.x, p.y, 0);
+            CurrentTowerPreview.position = new Vector3(p.x, p.y, 0);
         }
     }
 
     public void VerifyPlacement(bool  isAllowed)
     {
-        Debug.Log($"VerifyPlacement {isAllowed}");
-        if (CurrentTower != null)
+        //Debug.Log($"VerifyPlacement {isAllowed}");
+        if (CurrentTowerPreview != null)
         {
             SetBorderColor(isAllowed ? AllowedColor : DeniedColor);
         }
@@ -60,7 +63,7 @@ public class TowerPlacement : MonoBehaviour
 
     void SetBorderColor(Color color)
     {
-        var preview = CurrentTower.gameObject.GetComponent<TowerPlacementPreview>();
+        var preview = CurrentTowerPreview.gameObject.GetComponent<TowerPlacementPreview>();
         if (preview != null)
             preview.BorderRenderer.color = color;
     }

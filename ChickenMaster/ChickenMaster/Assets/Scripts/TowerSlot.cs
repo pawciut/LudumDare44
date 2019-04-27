@@ -35,7 +35,8 @@ public class TowerSlot : MonoBehaviour
 
     public void PlaceTower(TowerPlacementInfo towerInfo)
     {
-        
+        Instantiate(towerInfo.TowerPrefab, transform.position, Quaternion.identity);
+        IsEmpty = false;
     }
 
     private void Update()
