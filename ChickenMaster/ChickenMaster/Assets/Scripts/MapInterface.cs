@@ -26,12 +26,18 @@ public class MapInterface : MonoBehaviour
     [SerializeField]
     MapState MapState;
 
+    [SerializeField]
+    EggDisplay EggDisplay;
+
     TowerPlacement TowerPlacement;
+    [SerializeField]
+    TowerSlot[] Slots;
 
     // Start is called before the first frame update
     void Start()
     {
         TowerPlacement = GetComponent<TowerPlacement>();
+        EggDisplay.UpdateValue(MapState.EggsTotal);
     }
 
     // Update is called once per frame
@@ -40,7 +46,7 @@ public class MapInterface : MonoBehaviour
         
     }
 
-    public void PlaceTower(int towerType)
+    public void PickTower(int towerType)
     {
         Debug.Log("Place tower clicked");
         var selectedTower = TowerConfiguration.FirstOrDefault(tc => tc.TowerType == (TowerTypes)towerType);
@@ -55,7 +61,21 @@ public class MapInterface : MonoBehaviour
 
             TowerPlacement.Set(selectedTower);
         }
+    }
 
+    public void OnSlotEnter(int slotId)
+    {
+        if (Slots != null)
+        {
+            var slot = Slots.FirstOrDefault(s => s.Id == slotId);
+            if (slot == null)
+                Debug.LogError($"Slot not found {slotId}");
 
+            TowerPlacement.VerifyPlacement(slot.IsEmpty);
+        }
+    }
+    public void OnSlotExit()
+    {
+        TowerPlacement.VerifyPlacement(false);
     }
 }

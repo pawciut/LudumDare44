@@ -4,19 +4,27 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
-    GameObject TowerPrefab;
+    GameObject TowerPreviewPrefab;
     Transform CurrentTower;
+
+    [SerializeField]
+    Color AllowedColor;
+    [SerializeField]
+    Color DeniedColor;
 
     public void Set(TowerPlacementInfo towerPlacementInfo)
     {
         Debug.Log("Tower placement set");
-        TowerPrefab = towerPlacementInfo.TowerPrefab;
+        TowerPreviewPrefab = towerPlacementInfo.TowerPrefab;
 
+        if (CurrentTower != null)
+            Destroy(CurrentTower.gameObject);
 
         var mousePos = Input.mousePosition;
         //mousePos.z = 2.0; // we want 2m away from the camera position.
         var objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-        CurrentTower = Instantiate(TowerPrefab, objectPos, Quaternion.identity).transform;
+        CurrentTower = Instantiate(TowerPreviewPrefab, objectPos, Quaternion.identity).transform;
+        SetBorderColor(DeniedColor);
     }
 
     // Start is called before the first frame update
@@ -40,4 +48,21 @@ public class TowerPlacement : MonoBehaviour
             CurrentTower.position = new Vector3(p.x, p.y, 0);
         }
     }
+
+    public void VerifyPlacement(bool  isAllowed)
+    {
+        Debug.Log($"VerifyPlacement {isAllowed}");
+        if (CurrentTower != null)
+        {
+            SetBorderColor(isAllowed ? AllowedColor : DeniedColor);
+        }
+    }
+
+    void SetBorderColor(Color color)
+    {
+        var preview = CurrentTower.gameObject.GetComponent<TowerPlacementPreview>();
+        if (preview != null)
+            preview.BorderRenderer.color = color;
+    }
+
 }
