@@ -65,6 +65,7 @@ public class MoveingPath : MonoBehaviour
                     movementDirection = 1;
                 }
                 else if (movingTo >= PathSequence.Length - 1)
+                { }
 
         }   
         
