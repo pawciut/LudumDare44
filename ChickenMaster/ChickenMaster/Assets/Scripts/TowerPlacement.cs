@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,6 +18,15 @@ public class TowerPlacement : MonoBehaviour
     public void Set(TowerPlacementInfo towerPlacementInfo)
     {
         Debug.Log("Tower placement set");
+
+        if(towerPlacementInfo == null)
+        {
+            if (CurrentTowerPreview != null)
+                Destroy(CurrentTowerPreview.gameObject);
+            info = null;
+            return;
+        }
+
         TowerPreviewPrefab = towerPlacementInfo.TowerPrefab;
         info = towerPlacementInfo;
 
@@ -26,7 +36,14 @@ public class TowerPlacement : MonoBehaviour
         var mousePos = Input.mousePosition;
         //mousePos.z = 2.0; // we want 2m away from the camera position.
         var objectPos = Camera.main.ScreenToWorldPoint(mousePos);
-        CurrentTowerPreview = Instantiate(TowerPreviewPrefab, objectPos, Quaternion.identity).transform;
+
+        //korekta zeby bylo na srodku myszki
+        var towerPreview = TowerPreviewPrefab.GetComponent<TowerPlacementPreview>();
+        if (towerPreview != null && towerPreview.BorderRenderer != null && towerPreview.BorderRenderer.sprite != null)
+            objectPos = new Vector3(objectPos.x - towerPreview.BorderRenderer.bounds.size.x / 2, objectPos.y - towerPreview.BorderRenderer.bounds.size.y / 2, objectPos.z);
+        
+            
+            CurrentTowerPreview = Instantiate(TowerPreviewPrefab, objectPos, Quaternion.identity).transform;
         SetBorderColor(DeniedColor);
     }
 
@@ -48,8 +65,19 @@ public class TowerPlacement : MonoBehaviour
             var mousePos = Input.mousePosition;
             //mousePos.z = 2.0; // we want 2m away from the camera position.
             var p = Camera.main.ScreenToWorldPoint(mousePos);
+
+            //korekta zeby bylo na srodku myszki
+            var towerPreview = CurrentTowerPreview.gameObject.GetComponent<TowerPlacementPreview>();
+            if (towerPreview != null && towerPreview.BorderRenderer != null && towerPreview.BorderRenderer.sprite != null)
+                p = new Vector3(p.x - towerPreview.BorderRenderer.bounds.size.x / 2, p.y - towerPreview.BorderRenderer.bounds.size.y / 2, p.z);
+
             CurrentTowerPreview.position = new Vector3(p.x, p.y, 0);
         }
+    }
+
+    internal void Clear()
+    {
+        Set(null);
     }
 
     public void VerifyPlacement(bool  isAllowed)
