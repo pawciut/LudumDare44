@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RtsCamera : MonoBehaviour
 {
+    //TODO: mozna by jeszcze dodac obszary gdzie szybkosc przewijania jest mniejsza troche blizej srodka np.
+
     public Transform LeftMapEdge;
     public Transform RightMapEdge;
     public Transform TopMapEdge;
