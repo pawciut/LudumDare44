@@ -576,7 +576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   MyPath: {fileID: 153386327}
-  Speed: 900
+  Speed: 10
   MaxDistanceToGoal: 0.1
 --- !u!212 &1581478803
 SpriteRenderer:

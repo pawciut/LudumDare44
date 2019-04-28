@@ -9,11 +9,12 @@ using UnityEngine;
 public class EnemySpawnerInfo
 {
     public EnemyTypes EnemyType;
-    public Transform[] SpawnPoints;
+    /// <summary>
+    /// if not random, then spawn by index in MapLogic config
+    /// </summary>
+    public int SpawnPointIndex;
     /// <summary>
     /// if false spawns at first spawner
     /// </summary>
     public bool SpawnAtRandom;
-
-    public GameObject EnemyPrefab;
 }
