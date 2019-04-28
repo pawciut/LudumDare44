@@ -17,6 +17,7 @@ public class TowerSlot : MonoBehaviour
     public int Id;
     TowerTypes Type;
     GameObject Tower;
+    TowerState TowerState;
 
     [SerializeField]
     Color DefaultColor;
@@ -35,7 +36,8 @@ public class TowerSlot : MonoBehaviour
 
     public void PlaceTower(TowerPlacementInfo towerInfo)
     {
-        Instantiate(towerInfo.TowerPrefab, transform.position, Quaternion.identity);
+        Tower = Instantiate(towerInfo.TowerPrefab, transform.position, Quaternion.identity);
+        TowerState = Tower.GetComponent<TowerState>();
         IsEmpty = false;
     }
 
@@ -47,6 +49,10 @@ public class TowerSlot : MonoBehaviour
     {
         Debug.Log("mouse enter");
         spriteRenderer.color = HoverColor;
+
+        if (TowerState != null)
+            TowerState.ShowRange();
+
         if (towerSlotEnter != null)
             towerSlotEnter.Invoke(Id);
     }
@@ -55,6 +61,10 @@ public class TowerSlot : MonoBehaviour
     {
         Debug.Log("mouse exit");
         spriteRenderer.color = DefaultColor;
+
+        if (TowerState != null)
+            TowerState.HideRange();
+
         if (towerSlotExit != null)
             towerSlotExit.Invoke(Id);
     }

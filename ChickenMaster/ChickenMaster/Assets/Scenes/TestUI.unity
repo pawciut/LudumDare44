@@ -337,7 +337,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1611877227 stripped
 MonoBehaviour:
@@ -608,7 +608,7 @@ PrefabInstance:
     - target: {fileID: 7963442732122773922, guid: 34b42f56860811048958cede624e18d3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7963442732122773922, guid: 34b42f56860811048958cede624e18d3,
         type: 3}
@@ -690,5 +690,17 @@ PrefabInstance:
       propertyPath: Slots.Array.data[1]
       value: 
       objectReference: {fileID: 502174667}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[1].TowerPlacementPreviewPrefab
+      value: 
+      objectReference: {fileID: 478454746937409619, guid: 2582d5a89cf91334cb08baf63f7f7471,
+        type: 3}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[1].TowerPrefab
+      value: 
+      objectReference: {fileID: 4612405325508056751, guid: c83380fdda714d5468211c21361c617a,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34b42f56860811048958cede624e18d3, type: 3}

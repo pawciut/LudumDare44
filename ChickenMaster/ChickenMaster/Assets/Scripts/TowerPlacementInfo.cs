@@ -10,6 +10,7 @@ public class TowerPlacementInfo
 {
     public TowerTypes TowerType;
     public int Price;
+    public GameObject TowerPlacementPreviewPrefab;
     public GameObject TowerPrefab;
     public string Name;
     public string Desc;

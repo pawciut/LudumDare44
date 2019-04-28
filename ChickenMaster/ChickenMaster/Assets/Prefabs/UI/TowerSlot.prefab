@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5dabc330a1b59c448f90d5b46fd8853, type: 3}
-  m_Color: {r: 0.8584906, g: 0.78300685, b: 0.22272164, a: 1}
+  m_Color: {r: 0.6415094, g: 0.63334674, b: 0.5719117, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsEmpty: 1
   Id: 0
-  DefaultColor: {r: 0.8584906, g: 0.78300685, b: 0.22272164, a: 1}
+  DefaultColor: {r: 0.6415094, g: 0.63334674, b: 0.5719117, a: 1}
   HoverColor: {r: 0.07756319, g: 0.7830189, b: 0.76845413, a: 1}
   towerSlotEnter:
     m_PersistentCalls:

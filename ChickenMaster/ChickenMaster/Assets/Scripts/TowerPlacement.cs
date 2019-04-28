@@ -27,7 +27,7 @@ public class TowerPlacement : MonoBehaviour
             return;
         }
 
-        TowerPreviewPrefab = towerPlacementInfo.TowerPrefab;
+        TowerPreviewPrefab = towerPlacementInfo.TowerPlacementPreviewPrefab;
         info = towerPlacementInfo;
 
         if (CurrentTowerPreview != null)

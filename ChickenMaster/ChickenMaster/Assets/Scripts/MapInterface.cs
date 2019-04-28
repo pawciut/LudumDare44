@@ -105,7 +105,11 @@ public class MapInterface : MonoBehaviour
                 Debug.LogError($"Slot not found {slotId}");
 
             selectedSlot = slot;
-            TowerPlacement.VerifyPlacement(slot.IsEmpty && CanBuild(TowerPlacement.info.Price));
+            TowerPlacement.VerifyPlacement(slot.IsEmpty && 
+                (TowerPlacement.info != null
+                    && CanBuild(TowerPlacement.info.Price)
+                )
+                );
         }
     }
     public void OnSlotExit()
