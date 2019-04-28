@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5631950369228780644}
   - component: {fileID: 5631950369228780645}
   - component: {fileID: 5631950369228780642}
-  - component: {fileID: 5631950369228780647}
+  - component: {fileID: 8381977687947979886}
   m_Layer: 0
   m_Name: TowerSlot
   m_TagString: Untagged
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5dabc330a1b59c448f90d5b46fd8853, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8584906, g: 0.78300685, b: 0.22272164, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93,8 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109e3f34f5ea975458f5c7111d010a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsEmpty: 1
   Id: 0
-  DefaultColor: {r: 1, g: 1, b: 1, a: 1}
+  DefaultColor: {r: 0.8584906, g: 0.78300685, b: 0.22272164, a: 1}
   HoverColor: {r: 0.07756319, g: 0.7830189, b: 0.76845413, a: 1}
   towerSlotEnter:
     m_PersistentCalls:
@@ -128,7 +129,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: TowerSlotEnterEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!61 &5631950369228780647
+  clicked:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: TowerSlotEnterEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!61 &8381977687947979886
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,16 +147,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5, y: 0.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.28, y: 1.28}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.28, y: 1.28}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

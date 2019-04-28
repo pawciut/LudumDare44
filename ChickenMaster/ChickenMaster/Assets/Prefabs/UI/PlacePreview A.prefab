@@ -70,7 +70,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438239946127923282}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.222, y: 0.048, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8061891551159259359}
@@ -110,11 +110,12 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -816801013
+  m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d4015e7879867da4eaad63ffc794c81e, type: 3}
-  m_Color: {r: 0, g: 0.19270587, b: 1, a: 1}
+  m_Sprite: {fileID: -5521246014946524250, guid: c01997f23c86a0a4ba31f359e1d18a51,
+    type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -135,6 +136,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Boarder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620394469875581951, guid: 0d58c57fd4eb00a4989b4f48259a1ac7,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: -361743055
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620394469875581951, guid: 0d58c57fd4eb00a4989b4f48259a1ac7,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8973552753129875472, guid: 0d58c57fd4eb00a4989b4f48259a1ac7,
         type: 3}
