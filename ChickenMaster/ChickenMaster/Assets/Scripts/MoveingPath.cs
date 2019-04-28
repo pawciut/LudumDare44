@@ -50,7 +50,26 @@ public class MoveingPath : MonoBehaviour
         }
         while (true)
         {
-        }
-    }
+            yield return PathSequence[movingTo];
+
+            if (PathSequence.Length == 1)
+
+
+                continue;
+
+            if (PathType == PathTypes.linear)
+
+
+                if (movingTo <= 0)
+                {
+                    movementDirection = 1;
+                }
+                else if (movingTo >= PathSequence.Length - 1)
+
+        }   
+        
+    } 
+
 }
 
+  
