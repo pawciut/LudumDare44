@@ -682,6 +682,11 @@ PrefabInstance:
       objectReference: {fileID: 2111405232}
     - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
         type: 3}
+      propertyPath: TowerConfiguration.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
       propertyPath: Slots.Array.data[0]
       value: 
       objectReference: {fileID: 1611877227}
@@ -714,5 +719,82 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 478454746937409619, guid: 2127c958517f0634e8859b9d9f00d841,
         type: 3}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[2].TowerType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[2].Price
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[2].TowerPlacementPreviewPrefab
+      value: 
+      objectReference: {fileID: 478454746937409619, guid: 2e5272e4ad897fa4db999f17aa22e6f7,
+        type: 3}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[2].TowerPrefab
+      value: 
+      objectReference: {fileID: 4612405325508056751, guid: ba61bf99d0e88494e882666fe34530bc,
+        type: 3}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[2].Name
+      value: Pooping Hen
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[2].Desc
+      value: Long range warrior with fast attack (1 DMG)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: TowerConfiguration.Array.data[1].Desc
+      value: Melee warrior (5 DMG)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9220635026819144786, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.2999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524274466255705223, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.3999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 3836567637920779980, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.7000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914470716477790053, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -41.600006
+      objectReference: {fileID: 0}
+    - target: {fileID: 3914470716477790053, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.7000008
+      objectReference: {fileID: 0}
+    - target: {fileID: 7591584022690208511, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 90.70001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2210525244031805227, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2210525244031805227, guid: 34b42f56860811048958cede624e18d3,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34b42f56860811048958cede624e18d3, type: 3}

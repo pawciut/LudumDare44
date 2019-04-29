@@ -28,6 +28,9 @@ public class TowerState : MonoBehaviour
     [SerializeField]
     GameObject ProjectilePrefab;
 
+    [SerializeField]
+    float ProjectileSpeed;
+
 
 
     List<EnemyScript> TargetedEnemies;
@@ -82,6 +85,9 @@ public class TowerState : MonoBehaviour
         TargetedEnemies.Add(enemy);
         switch (AttackType)
         {
+            case AttackTypes.Range:
+                StartCoroutine(AttackRange(enemy));
+                break;
             default:
                 //melee
                 StartCoroutine(AttackMelee(enemy));
@@ -107,6 +113,33 @@ public class TowerState : MonoBehaviour
         Debug.Log("Stopped Attacking");
         yield return null;
     }
+
+    IEnumerator AttackRange(EnemyScript enemy)
+    {
+        Debug.Log("Attacking range");
+        do
+        {
+            var projectile = Instantiate(ProjectilePrefab, ProjectileSource.position, Quaternion.identity);
+            var projectileScript = projectile.GetComponent<Projectile>();
+            projectileScript.InitProjectile(enemy.transform, ProjectileSpeed, Damage);
+            projectileScript.StartMovement();
+
+            //enemy.Damage(Damage);
+            //var hit = Instantiate(Damage.HitPrefab, MeleeHitSource.position, Quaternion.identity, enemy.gameObject.transform);
+            //GameObject.Destroy(hit, 1);
+            Debug.Log("Shoot");
+
+
+            yield return new WaitForSeconds(AttackSpeed);
+        }
+        while (IsEnemyInRange(enemy) && !enemy.IsDead);
+
+        TargetedEnemies.Clear();
+
+        Debug.Log("Stopped Attacking ranged");
+        yield return null;
+    }
+
 
     bool IsEnemyInRange(EnemyScript enemy)
     {

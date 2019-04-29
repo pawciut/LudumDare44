@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5389506483455515250}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6127985487857033449}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1717730754274677620}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 5574837998107771315}
   - component: {fileID: 6444941278288380109}
   - component: {fileID: 5221677060152903073}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fox_Paw2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -222,7 +222,7 @@ GameObject:
   - component: {fileID: 8420604330795524768}
   - component: {fileID: 9150273720505131386}
   - component: {fileID: 5887329581682973470}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fox_Paw3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 6574487255665377607}
   - component: {fileID: 2914338380152826410}
   - component: {fileID: 5964699090541011867}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fox_Paw4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9057166477417795260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BackPawFar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,8 @@ GameObject:
   - component: {fileID: 1585341918663496395}
   - component: {fileID: 7134482313014956091}
   - component: {fileID: 5467475642707652400}
-  m_Layer: 0
+  - component: {fileID: 5118860207317711886}
+  m_Layer: 9
   m_Name: fox_256_x_128_fixed
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -542,8 +543,9 @@ MonoBehaviour:
     IsHeroic: 0
     DestroysRandomTower: 1
     Score: 1
-    MaxHp: 3
+    MaxHp: 15
   CurrentHp: 0
+  IsDead: 0
 --- !u!114 &7134482313014956091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -588,6 +590,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9515433, y: 0.77905345}
   m_EdgeRadius: 0
+--- !u!50 &5118860207317711886
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4126800735455838933}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4145621999708003262
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,7 +620,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6146208306056242375}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tali2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7481364275244064201}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -658,7 +681,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1197625462217198776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BackPawNear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +714,7 @@ GameObject:
   - component: {fileID: 7623826937344567731}
   - component: {fileID: 7876827686772548651}
   - component: {fileID: 5724243233415619241}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fox_Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +834,7 @@ GameObject:
   - component: {fileID: 6383461954098667773}
   - component: {fileID: 5101212838155884079}
   - component: {fileID: 2163423557504083351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Fox_Paw1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -921,7 +944,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2009164153169890184}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FronPawFar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +974,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7634463970699486946}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FrontPawNear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
