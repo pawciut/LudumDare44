@@ -69,11 +69,11 @@ public class RtsCamera : MonoBehaviour
         float halfScreenHeight = height / 2;
         //Debug.Log($"Cam XY {cameraPos.x} ; {cameraPos.y} , WH {width}x{height}");
 
-        Debug.Log($"camPosX {cameraPos.x} camPosY {cameraPos.y} LEX {LeftMapEdge.position.x} Cond C < E {cameraPos.x < LeftMapEdge.position.x} TEY {TopMapEdge.position.y} REX {RightMapEdge.position.x} BEY {BottomtMapEdge.position.y}");
+        //Debug.Log($"camPosX {cameraPos.x} camPosY {cameraPos.y} LEX {LeftMapEdge.position.x} Cond C < E {cameraPos.x < LeftMapEdge.position.x} TEY {TopMapEdge.position.y} REX {RightMapEdge.position.x} BEY {BottomtMapEdge.position.y}");
         if (cameraPos.x < LeftMapEdge.position.x - halfScreenWidth)
         {
             transform.position = new Vector3(LeftMapEdge.position.x + halfScreenWidth, transform.position.y, transform.position.z);
-            Debug.Log($"Left Correction X {transform.position.x} Y {transform.position.y}");
+            //Debug.Log($"Left Correction X {transform.position.x} Y {transform.position.y}");
         }
         if (cameraPos.y > TopMapEdge.position.y - halfScreenHeight)
             transform.position = new Vector3(transform.position.x, TopMapEdge.position.y - halfScreenHeight, transform.position.z);

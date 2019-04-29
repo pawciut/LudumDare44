@@ -16,6 +16,7 @@ public class WaveState : MonoBehaviour
     public int Score;
 
     WaveInfo WaveInfo;
+    public int SpawnIndex = -1;
 
     public UnityEvent WaveCleared;
 
@@ -35,6 +36,8 @@ public class WaveState : MonoBehaviour
     {
         this.WaveInfo = waveInfo;
         Index = index;
+        SpawnIndex = -1;
+
         if (WaveInfo != null && WaveInfo.EnemySequence != null)
             this.TotalEnemies = WaveInfo.EnemySequence.Length;
         else

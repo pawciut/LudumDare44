@@ -26,7 +26,7 @@ public class MapInterface : MonoBehaviour
     WaveInfo[] WaveConfiguration;
     //TODO:currentWaveState?
     [SerializeField]
-    Transform[] FoxSpawnPoints;
+    Spawner[] FoxSpawnPoints;
     [SerializeField]
     TowerSlot[] Slots;
 
@@ -36,9 +36,13 @@ public class MapInterface : MonoBehaviour
     [SerializeField]
     MapState MapState;
 
+    [SerializeField]
+    Transform EnemyGroupingObject;
+
     WaveState CurrentWave;
     TowerPlacement TowerPlacement;
     TowerSlot selectedSlot;
+    int Score;
 
     [Space(20)]
     [Header("UI")]
@@ -74,10 +78,11 @@ public class MapInterface : MonoBehaviour
             Debug.LogError("No wave to start");
             return;
         }
-        CurrentWave.StartWave(WaveConfiguration[0], 0);
-        UpdateWaveAnnouncer();
 
         UITopMenu.HideAll();
+
+        UITopMenu.ShowScore(Score);
+        NextWave();
     }
 
     // Update is called once per frame
@@ -192,11 +197,15 @@ public class MapInterface : MonoBehaviour
 
     public void UpdateTotalTime()
     {
-        int hours = ((int)TotalTime.CurrentValue / 3600) % 24;
-        int minutes = ((int)TotalTime.CurrentValue / 60) % 60;
-        int seconds = (int)TotalTime.CurrentValue % 60;
-        UITopMenu.ShowTime(String.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds));
+        UITopMenu.ShowTime(FormatTime(TotalTime.CurrentValue));
+    }
 
+    string FormatTime(float time)
+    {
+        int hours = ((int)time / 3600) % 24;
+        int minutes = ((int)time / 60) % 60;
+        int seconds = (int)time % 60;
+        return String.Format("{0:D2}:{1:D2}:{2:D2}", hours, minutes, seconds);
     }
 
     public void NextWave()
@@ -205,12 +214,102 @@ public class MapInterface : MonoBehaviour
         {
             //Koniec gry
         }
-        else;
+        else
         {
             int nextWaveIndex = CurrentWave.Index + 1;
             CurrentWave.StartWave(WaveConfiguration[nextWaveIndex], nextWaveIndex);
             UpdateWaveAnnouncer();
+
+            UITopMenu.ShowRound(nextWaveIndex + 1);
+
+            float timeBeforeWaveStarts = WaveConfiguration[nextWaveIndex].TimeBeforeWaveStarts;
+            if (timeBeforeWaveStarts > 0)
+                StartCoroutine(StartBeforeWaveTimer("Round starts in:", timeBeforeWaveStarts));
+            StartCoroutine(StartWaveTimer("Round time:", nextWaveIndex, timeBeforeWaveStarts));
+            StartCoroutine(StartSpawning(timeBeforeWaveStarts));
         }
+    }
+
+    IEnumerator StartBeforeWaveTimer(string beforeTitle, float timeBeforeWaveStarts)
+    {
+        float countdown = timeBeforeWaveStarts;
+
+        while (countdown > 0)
+        {
+            UITopMenu.ShowWaveTime(beforeTitle, String.Format("{0}s", (int)countdown));
+            yield return new WaitForSeconds(1);
+            --countdown;
+        }
+    }
+
+    IEnumerator StartWaveTimer(string timerTitle, int roundIndex, float timeBeforeWaveStarts)
+    {
+        yield return new WaitForSeconds(timeBeforeWaveStarts);
+
+        float time = 0;
+
+        while (CurrentWave.Index == roundIndex)
+        {
+            UITopMenu.ShowWaveTime(timerTitle, FormatTime(time));
+            yield return new WaitForSeconds(1);
+            ++time;
+        }
+    }
+
+
+    IEnumerator StartSpawning(float timeBeforeWaveStarts)
+    {
+        yield return new WaitForSeconds(timeBeforeWaveStarts);
+
+        var waveInfo = WaveConfiguration[CurrentWave.Index];
+
+        for (int i = 0; i < waveInfo.EnemySequence.Length; ++i)
+        {
+            var nextSpawnIndex = i;
+            CurrentWave.SpawnIndex = nextSpawnIndex;
+
+            var enemyInfo = waveInfo.EnemySequence[i];
+            var enemyPrefab = EnemyConfiguration.FirstOrDefault(e => e.EnemyType == enemyInfo.EnemyType).EnemyPrefab;
+            Spawner spawner = GetSpawner(enemyInfo);
+
+            SpawnEnemy(enemyPrefab, spawner);
+            yield return new WaitForSeconds(waveInfo.TimeBetweenSpawns);
+        }
+    }
+
+    void SpawnEnemy(GameObject enemyPrefab, Spawner spawner)
+    {
+        var enemy = Instantiate(enemyPrefab, spawner.transform.position, Quaternion.identity, EnemyGroupingObject);
+        var enemyFollowPath = enemy.GetComponent<FollowPath>();
+        enemyFollowPath.MyPath = spawner.SpawnerPath;
+        //TODO:odwracanie wroga powinno byc chhyba w follow path tak samo jak obsluga obrotu zeby to bralo z PathPoint.Tranform
+    }
+
+    Spawner GetSpawner(EnemySpawnerInfo enemySpawnerInfo)
+    {
+        Spawner spawnPoint;
+
+        Spawner[] spawnPoints;
+
+        switch (enemySpawnerInfo.EnemyType)
+        {
+            case EnemyTypes.Fox:
+                spawnPoints = FoxSpawnPoints;
+                break;
+            default:
+                spawnPoints = null;
+                break;
+        }
+
+        if (enemySpawnerInfo.SpawnAtRandom)
+        {
+            int spawnPointIndex = UnityEngine.Random.Range(0, spawnPoints.Length-1);
+            Debug.Log($"Random spawn index {spawnPointIndex} total {spawnPoints.Length}");
+            spawnPoint = spawnPoints[spawnPointIndex];
+        }
+        else
+            spawnPoint = spawnPoints[0];
+        return spawnPoint;
     }
 
 
