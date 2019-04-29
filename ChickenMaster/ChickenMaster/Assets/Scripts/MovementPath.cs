@@ -5,27 +5,19 @@ using System.Collections.Generic;
 
 public class MovementPath : MonoBehaviour
 {
-    #region Enums
     public enum PathTypes //Types of movement paths
     {
         linear,
         loop
     }
-    #endregion //Enums
-
-    #region Public Variables
+    
     public PathTypes PathType; //Indicates type of path (Linear or Looping)
     public int movementDirection = 1; //1 clockwise/forward || -1 counter clockwise/backwards
     public int movingTo = 0; //used to identify point in PathSequence we are moving to
     public Transform[] PathSequence; //Array of all points in the path
-    #endregion //Public Variables
-
-    #region Private Variables
-
-    #endregion //Private Variables
+    
 
     // (Unity Named Methods)
-    #region Main Methods
     //Update is called by Unity every frame
     void Update()
     {
@@ -58,15 +50,10 @@ public class MovementPath : MonoBehaviour
             Gizmos.DrawLine(PathSequence[0].position, PathSequence[PathSequence.Length-1].position);
         }
     }
-    #endregion //Main Methods
-
-    //(Custom Named Methods)
-    #region Utility Methods 
-
-    #endregion //Utility Methods
+    
 
     //Coroutines run parallel to other fucntions
-    #region Coroutines
+
     //GetNextPathPoint() returns the transform component of the next point in our path
     //FollowPath.cs script will inturn move the object it is on to that point in the game
     public IEnumerator<Transform> GetNextPathPoint()
@@ -130,5 +117,4 @@ public class MovementPath : MonoBehaviour
             }
         }
     }
-    #endregion //Coroutines
 }

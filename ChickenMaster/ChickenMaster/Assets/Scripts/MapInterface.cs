@@ -282,6 +282,7 @@ public class MapInterface : MonoBehaviour
         var enemy = Instantiate(enemyPrefab, spawner.transform.position, Quaternion.identity, EnemyGroupingObject);
         var enemyFollowPath = enemy.GetComponent<FollowPath>();
         enemyFollowPath.MyPath = spawner.SpawnerPath;
+        enemyFollowPath.StartMovement();
         //TODO:odwracanie wroga powinno byc chhyba w follow path tak samo jak obsluga obrotu zeby to bralo z PathPoint.Tranform
     }
 

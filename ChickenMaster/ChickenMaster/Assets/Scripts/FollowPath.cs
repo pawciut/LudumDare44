@@ -4,28 +4,30 @@ using System.Collections.Generic;
 
 public class FollowPath : MonoBehaviour
 {
-    #region Enums
     public enum MovementType  //Type of Movement
     {
         MoveTowards,
         LerpTowards
     }
-    #endregion //Enums
-
-    #region Public Variables
+    
     public MovementType Type = MovementType.MoveTowards; // Movement type used
     public MovementPath MyPath; // Reference to Movement Path Used
     public float Speed = 1; // Speed object is moving
     public float MaxDistanceToGoal = .1f; // How close does it have to be to the point to be considered at point
-    #endregion //Public Variables
+    
+    bool HasStarted;
+    public bool AutoStart;
 
-    #region Private Variables
     private IEnumerator<Transform> pointInPath; //Used to reference points returned from MyPath.GetNextPathPoint
-    #endregion //Private Variables
 
     // (Unity Named Methods)
-    #region Main Methods
     public void Start()
+    {
+        if (AutoStart)
+            StartMovement();
+    }
+
+    public void StartMovement()
     {
         //Make sure there is a path assigned
         if (MyPath == null)
@@ -50,11 +52,17 @@ public class FollowPath : MonoBehaviour
 
         //Set the position of this object to the position of our starting point
         transform.position = Fixed2D(pointInPath.Current.position);
+
+        HasStarted = true;
     }
      
     //Update is called by Unity every frame
     public void Update()
     {
+        if (!HasStarted)
+            return;
+
+
         //Validate there is a path with a point in it
         if (pointInPath == null || pointInPath.Current == null)
         {
@@ -95,17 +103,7 @@ public class FollowPath : MonoBehaviour
         }
         */
     }
-    #endregion //Main Methods
-
-    //(Custom Named Methods)
-    #region Utility Methods 
-
-    #endregion //Utility Methods
-
-    //Coroutines run parallel to other fucntions
-    #region Coroutines
-
-    #endregion //Coroutines
+    
 
     Vector3 Fixed2D(Vector3 vector)
     {
