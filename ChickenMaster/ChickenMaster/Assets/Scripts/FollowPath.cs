@@ -57,6 +57,11 @@ public class FollowPath : MonoBehaviour
 
         HasStarted = true;
     }
+
+    public void StopMovement()
+    {
+        HasStarted = false;
+    }
      
     //Update is called by Unity every frame
     public void Update()

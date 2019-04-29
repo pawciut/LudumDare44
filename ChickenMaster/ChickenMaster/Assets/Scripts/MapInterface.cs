@@ -86,6 +86,8 @@ public class MapInterface : MonoBehaviour
 
         UITopMenu.ShowScore(Score);
         NextWave();
+
+        CurrentWave.WaveCleared.AddListener(OnWaveCleared);
     }
 
     // Update is called once per frame
@@ -285,9 +287,20 @@ public class MapInterface : MonoBehaviour
         var enemy = Instantiate(enemyPrefab, spawner.transform.position, Quaternion.identity, EnemyGroupingObject);
         var enemyFollowPath = enemy.GetComponent<FollowPath>();
         enemyFollowPath.MyPath = spawner.SpawnerPath;
+
+        var enemyScript = enemy.GetComponent<EnemyScript>();
+        enemyScript.Attach((es) =>
+            {
+                CurrentWave.EnemyKilled(es.Info.Score);
+
+                UITopMenu.ShowScore(Score + CurrentWave.Score);
+            }
+        );
+
         enemyFollowPath.StartMovement();
         //TODO:odwracanie wroga powinno byc chhyba w follow path tak samo jak obsluga obrotu zeby to bralo z PathPoint.Tranform
     }
+
 
     Spawner GetSpawner(EnemySpawnerInfo enemySpawnerInfo)
     {
@@ -314,6 +327,21 @@ public class MapInterface : MonoBehaviour
         else
             spawnPoint = spawnPoints[0];
         return spawnPoint;
+    }
+
+    public void OnWaveCleared()
+    {
+        if (CurrentWave.Index >= WaveConfiguration.Length - 1)
+        {
+            //Przelicz wynik
+            //Wyswietl gratulacje
+            //Idz do wynikow
+            //Koniec Gry
+            Application.Quit();
+        }
+        else
+            NextWave();
+
     }
 
 

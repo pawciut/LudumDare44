@@ -37,11 +37,13 @@ public class WaveState : MonoBehaviour
         this.WaveInfo = waveInfo;
         Index = index;
         SpawnIndex = -1;
+        EnemiesKilled = 0;
 
         if (WaveInfo != null && WaveInfo.EnemySequence != null)
             this.TotalEnemies = WaveInfo.EnemySequence.Length;
         else
             this.TotalEnemies = 0;
+        Debug.Log($"Starting wave enemies {TotalEnemies} Enemies Killed {EnemiesKilled}");
     }
 
     public void EnemyKilled(int score)

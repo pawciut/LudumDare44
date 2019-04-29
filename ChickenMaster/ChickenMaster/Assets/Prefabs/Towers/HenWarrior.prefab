@@ -226,6 +226,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Range: {fileID: 2738618534102045264}
+  Colliders:
+  - {fileID: 725343195447016881}
+  MaxTargets: 1
+  AttackSpeed: 0.8
+  Damage:
+    DamageType: 1
+    DamageValue: 1
+    HitPrefab: {fileID: 1559297642709504414, guid: 40a686f6dbb772540995be515388a784,
+      type: 3}
 --- !u!1 &6265820294145484324
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,6 +425,12 @@ Transform:
 --- !u!212 &2738618534102045264 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8160215497709101207, guid: 71ac98082afb9a146980204dec0eea6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6286866538270208711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!58 &725343195447016881 stripped
+CircleCollider2D:
+  m_CorrespondingSourceObject: {fileID: 6714726331537362806, guid: 71ac98082afb9a146980204dec0eea6e,
     type: 3}
   m_PrefabInstance: {fileID: 6286866538270208711}
   m_PrefabAsset: {fileID: 0}

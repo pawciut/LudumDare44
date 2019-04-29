@@ -1468,7 +1468,7 @@ PrefabInstance:
     - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
         type: 3}
       propertyPath: WaveConfiguration.Array.data[0].WaveTitle
-      value: First Wave - Foxes
+      value: Wave 1 - Foxes
       objectReference: {fileID: 0}
     - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
         type: 3}
@@ -1503,7 +1503,7 @@ PrefabInstance:
     - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
         type: 3}
       propertyPath: WaveConfiguration.Array.data[1].WaveTitle
-      value: Wave 1 - More foxes
+      value: Wave 2 - More foxes
       objectReference: {fileID: 0}
     - target: {fileID: 7963442733756850546, guid: 34b42f56860811048958cede624e18d3,
         type: 3}

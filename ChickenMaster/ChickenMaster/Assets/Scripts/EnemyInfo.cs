@@ -12,6 +12,5 @@ public class EnemyInfo
     public bool IsHeroic;
     public bool DestroysRandomTower;
     public int Score;
-    public float CurrentHp;
     public float MaxHp;
 }
