@@ -17,6 +17,18 @@ public class TowerState : MonoBehaviour
     [SerializeField]
     DamageInfo Damage;
 
+    [SerializeField]
+    AttackTypes AttackType;
+
+    [SerializeField]
+    Transform ProjectileSource;
+    [SerializeField]
+    Transform MeleeHitSource;
+
+    [SerializeField]
+    GameObject ProjectilePrefab;
+
+
 
     List<EnemyScript> TargetedEnemies;
 
@@ -68,16 +80,22 @@ public class TowerState : MonoBehaviour
         var enemy = enemies.FirstOrDefault().gameObject.GetComponent<EnemyScript>();
         TargetedEnemies.Clear();
         TargetedEnemies.Add(enemy);
-        StartCoroutine(Attack(enemy));
+        switch (AttackType)
+        {
+            default:
+                //melee
+                StartCoroutine(AttackMelee(enemy));
+                break;
+        }
     }
 
-    IEnumerator Attack(EnemyScript enemy)
+    IEnumerator AttackMelee(EnemyScript enemy)
     {
         Debug.Log("Attacking");
         do
         {
             enemy.Damage(Damage);
-            var hit = Instantiate(Damage.HitPrefab,enemy.gameObject.transform.position, Quaternion.identity,enemy.gameObject.transform);
+            var hit = Instantiate(Damage.HitPrefab, MeleeHitSource.position, Quaternion.identity,enemy.gameObject.transform);
             GameObject.Destroy(hit, 1);
             Debug.Log("Hit");
             yield return new WaitForSeconds(AttackSpeed);

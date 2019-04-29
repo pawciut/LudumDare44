@@ -79,6 +79,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &3490433216828097076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4232671854175619334}
+  m_Layer: 0
+  m_Name: Beek
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4232671854175619334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3490433216828097076}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.46499997, y: 0.65199995, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4680312089337852075}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3569982910526781880
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,6 +265,10 @@ MonoBehaviour:
     DamageValue: 1
     HitPrefab: {fileID: 1559297642709504414, guid: 40a686f6dbb772540995be515388a784,
       type: 3}
+  AttackType: 0
+  ProjectileSource: {fileID: 0}
+  MeleeHitSource: {fileID: 4232671854175619334}
+  ProjectilePrefab: {fileID: 0}
 --- !u!1 &6265820294145484324
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,7 +328,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4232671854175619334}
   m_Father: {fileID: 6436961445784800285}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
