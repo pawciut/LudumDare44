@@ -58,11 +58,14 @@ public class MapInterface : MonoBehaviour
 
 
     Timer TotalTime;
+    System.Random random;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        random = new System.Random(System.DateTime.Now.Millisecond);
+
         TowerPlacement = GetComponent<TowerPlacement>();
         CurrentWave = GetComponent<WaveState>();
         TotalTime = GetComponent<Timer>();
@@ -304,7 +307,7 @@ public class MapInterface : MonoBehaviour
 
         if (enemySpawnerInfo.SpawnAtRandom)
         {
-            int spawnPointIndex = UnityEngine.Random.Range(0, spawnPoints.Length-1);
+            int spawnPointIndex = random.Next(0, spawnPoints.Length);
             Debug.Log($"Random spawn index {spawnPointIndex} total {spawnPoints.Length}");
             spawnPoint = spawnPoints[spawnPointIndex];
         }

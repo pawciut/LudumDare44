@@ -14,7 +14,9 @@ public class FollowPath : MonoBehaviour
     public MovementPath MyPath; // Reference to Movement Path Used
     public float Speed = 1; // Speed object is moving
     public float MaxDistanceToGoal = .1f; // How close does it have to be to the point to be considered at point
-    
+
+    public int movingTo = 0; //used to identify point in PathSequence we are moving to
+
     bool HasStarted;
     public bool AutoStart;
 
@@ -37,7 +39,7 @@ public class FollowPath : MonoBehaviour
         }
 
         //Sets up a reference to an instance of the coroutine GetNextPathPoint
-        pointInPath = MyPath.GetNextPathPoint();
+        pointInPath = GetNextPathPoint();
         Debug.Log(pointInPath.Current);
         //Get the next point in the path to move to (Gets the Default 1st value)
         pointInPath.MoveNext();
@@ -103,7 +105,74 @@ public class FollowPath : MonoBehaviour
         }
         */
     }
-    
+
+
+    //GetNextPathPoint() returns the transform component of the next point in our path
+    //FollowPath.cs script will inturn move the object it is on to that point in the game
+    public IEnumerator<Transform> GetNextPathPoint()
+    {
+        var movementDirection = MyPath.movementDirection;//TODO:ale w sumie moglbym to tutaj ustawiac i wtedy by byla potrzebna tylko jedna sciezka
+
+        //Make sure that your sequence has points in it
+        //and that there are at least two points to constitute a path
+        if (MyPath.PathSequence == null || MyPath.PathSequence.Length < 1)
+        {
+            yield break; //Exits the Coroutine sequence length check fails
+        }
+
+        while (true) //Does not infinite loop due to yield return!!
+        {
+            //Return the current point in PathSequence
+            //and wait for next call of enumerator (Prevents infinite loop)
+            yield return MyPath.PathSequence[movingTo];
+            //*********************************PAUSES HERE******************************************************//
+            //If there is only one point exit the coroutine
+            if (MyPath.PathSequence.Length == 1)
+            {
+                continue;
+            }
+
+            //If Linear path move from start to end then end to start then repeat
+            if (MyPath.PathType == PathTypes.linear)
+            {
+                //If you are at the begining of the path
+                if (movingTo <= 0)
+                {
+                    movementDirection = 1; //Seting to 1 moves forward
+                }
+                //Else if you are at the end of your path
+                else if (movingTo >= MyPath.PathSequence.Length - 1)
+                {
+                    movementDirection = -1; //Seting to -1 moves backwards
+                }
+            }
+
+            movingTo = movingTo + movementDirection;
+            //movementDirection should always be either 1 or -1
+            //We add direction to the index to move us to the
+            //next point in the sequence of points in our path
+
+
+            //For Looping path you must move the index when you reach 
+            //the begining or end of the PathSequence to loop the path
+            if (MyPath.PathType == PathTypes.loop)
+            {
+                //If you just moved past the last point(moving forward)
+                if (movingTo >= MyPath.PathSequence.Length)
+                {
+                    //Set the next point to move to as the first point in sequence
+                    movingTo = 0;
+                }
+                //If you just moved past the first point(moving backwards)
+                if (movingTo < 0)
+                {
+                    //Set the next point to move to as the last point in sequence
+                    movingTo = MyPath.PathSequence.Length - 1;
+                }
+            }
+        }
+    }
+
 
     Vector3 Fixed2D(Vector3 vector)
     {
