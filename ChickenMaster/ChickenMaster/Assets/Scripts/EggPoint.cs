@@ -16,10 +16,11 @@ public class EggPoint : MonoBehaviour
             var enemyScript = collision.gameObject.GetComponent<EnemyScript>();
             if (enemyScript.Info.DestroysRandomTower)
             {
+                Debug.Log($"EggPoint.OnDestroy {collision.gameObject.GetInstanceID()}");
                 if (OnDestroyTower != null)
                     OnDestroyTower.Invoke();
             }
-            else;
+            else
             {
                 if (OnEggStolen != null)
                     OnEggStolen.Invoke();

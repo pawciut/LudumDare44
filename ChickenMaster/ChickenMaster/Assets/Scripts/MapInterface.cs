@@ -143,7 +143,7 @@ public class MapInterface : MonoBehaviour
 
     void SubstractEggs(int amount)
     {
-        MapState.EggsTotal -= amount;
+        MapState.EggsTotal = MapState.EggsTotal - amount;
         EggDisplay.UpdateValue(MapState.EggsTotal);
     }
 
@@ -333,6 +333,8 @@ public class MapInterface : MonoBehaviour
     {
         if (CurrentWave.Index >= WaveConfiguration.Length - 1)
         {
+
+            //WIN
             //Przelicz wynik
             //Wyswietl gratulacje
             //Idz do wynikow
@@ -344,5 +346,40 @@ public class MapInterface : MonoBehaviour
 
     }
 
+
+    public  void OnDestroyTower()
+    {
+        Debug.Log("Destroy tower");
+        var slotsWithTower = Slots.Where(s => !s.IsEmpty);
+        if (slotsWithTower.Any())
+        {
+            var randomSlot = random.Next(0, slotsWithTower.Count());
+            slotsWithTower.ElementAt(randomSlot).DestroyTower();
+        }
+        else
+            OnEggStolen();
+    }
+
+    public void OnEggStolen()
+    {
+        Debug.Log($"Stole egg Total{MapState.EggsTotal}, Subs {1}");
+        SubstractEggs(1);
+        if (MapState.EggsTotal <= 0)
+        {
+            EggDisplay.UpdateValue(0);
+            //Lose
+            //Przelicz wynik
+
+            //Idz do wynikow
+            //Koniec Gry
+            Application.Quit();
+        }
+        else
+        {
+            //TODO: jakis dzwiek albo komunikat
+        }
+
+        Debug.Log($"AfterStole Total{MapState.EggsTotal}");
+    }
 
 }

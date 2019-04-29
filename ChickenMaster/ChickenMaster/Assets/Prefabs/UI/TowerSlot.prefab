@@ -95,6 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsEmpty: 1
   Id: 0
+  TowerExplosionPrefab: {fileID: 1937351433878392635, guid: 45657e89391c550459c710d7ca792f87,
+    type: 3}
   DefaultColor: {r: 0.6415094, g: 0.63334674, b: 0.5719117, a: 1}
   HoverColor: {r: 0.07756319, g: 0.7830189, b: 0.76845413, a: 1}
   towerSlotEnter:

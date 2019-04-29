@@ -6924,6 +6924,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnDestroyTower.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnEggStolen.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnDestroyTower.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnDestroyTower.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnEggStolen.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnEggStolen.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnDestroyTower.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 654017608}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnEggStolen.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 654017608}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnDestroyTower.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnDestroyTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnDestroyTower.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnEggStolen.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnEggStolen
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117794578934607796, guid: 2ad3e89aff766464ab98391613da91fb,
+        type: 3}
+      propertyPath: OnEggStolen.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ad3e89aff766464ab98391613da91fb, type: 3}
 --- !u!1001 &2941288567300271679

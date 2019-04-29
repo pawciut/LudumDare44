@@ -20,6 +20,9 @@ public class TowerSlot : MonoBehaviour
     TowerState TowerState;
 
     [SerializeField]
+    GameObject TowerExplosionPrefab;
+
+    [SerializeField]
     Color DefaultColor;
     [SerializeField]
     Color HoverColor;
@@ -75,4 +78,12 @@ public class TowerSlot : MonoBehaviour
             clicked.Invoke(Id);
     }
 
+    internal void DestroyTower()
+    {
+        GameObject.Destroy(Tower);
+        var explosion = Instantiate(TowerExplosionPrefab, transform.position, Quaternion.identity);
+        GameObject.Destroy(explosion, 1.5f);
+        TowerState = null;
+        IsEmpty = true;
+    }
 }
