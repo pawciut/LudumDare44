@@ -8,10 +8,7 @@ public class MenuManager : MonoBehaviour
     public AudioClip hover;
     public AudioClip click;
 
-    public void loadNextScene()
-    {
-        Application.LoadLevel("OtherScene");
-    }
+    
      
     public void OnHover()
     {

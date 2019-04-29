@@ -2617,7 +2617,7 @@ GameObject:
   - component: {fileID: 7963442733756850546}
   - component: {fileID: 3494099620158036100}
   - component: {fileID: 7963442733756850544}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MapLogic
   m_TagString: Untagged
   m_Icon: {fileID: 0}

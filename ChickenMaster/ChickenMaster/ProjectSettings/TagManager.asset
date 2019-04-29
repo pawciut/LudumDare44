@@ -48,6 +48,12 @@ TagManager:
   - name: Towers
     uniqueID: 3478166283
     locked: 0
+  - name: Enemies
+    uniqueID: 3696421035
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: MenuUI
+    uniqueID: 1053649585
     locked: 0

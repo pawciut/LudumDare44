@@ -12,7 +12,7 @@ public class UITowerButton : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetKey(KeyCode.Escape))
         {
             Debug.Log("Pressed secondary button.");
             IsSelected = false;
