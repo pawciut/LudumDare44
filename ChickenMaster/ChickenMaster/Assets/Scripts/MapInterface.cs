@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -44,6 +45,11 @@ public class MapInterface : MonoBehaviour
     TowerSlot selectedSlot;
     int Score;
 
+    public AudioSource audioSource;
+    public AudioClip alarm;
+    public AudioClip victoryClip;
+    public AudioClip defeatClip;
+
     [Space(20)]
     [Header("UI")]
 
@@ -56,9 +62,37 @@ public class MapInterface : MonoBehaviour
     [SerializeField]
     UITopMenuUpdater UITopMenu;
 
+    [SerializeField]
+    GameObject UIEggLost;
+    [SerializeField]
+    GameObject UITowerLost;
+
+    [SerializeField]
+    GameObject UIVictoryScreen;
+
+    //zwalone
+    [SerializeField]
+    TextUpdater UIVictoryScore;
+
+    [SerializeField]
+    TextMeshProUGUI UIVScore;
+
+    [SerializeField]
+    GameObject UIDefeatScreen;
+
+    //zwalone
+    [SerializeField]
+    TextUpdater UIDefeatScore;
+
+    [SerializeField]
+    TextMeshProUGUI UIDScore;
+
 
     Timer TotalTime;
     System.Random random;
+
+    bool gameFinished;
+
 
 
     // Start is called before the first frame update
@@ -88,6 +122,9 @@ public class MapInterface : MonoBehaviour
         NextWave();
 
         CurrentWave.WaveCleared.AddListener(OnWaveCleared);
+
+        UIEggLost.SetActive(false);
+        UITowerLost.SetActive(false);
     }
 
     // Update is called once per frame
@@ -334,12 +371,7 @@ public class MapInterface : MonoBehaviour
         if (CurrentWave.Index >= WaveConfiguration.Length - 1)
         {
 
-            //WIN
-            //Przelicz wynik
-            //Wyswietl gratulacje
-            //Idz do wynikow
-            //Koniec Gry
-            Application.Quit();
+            Victory();
         }
         else
             NextWave();
@@ -347,14 +379,18 @@ public class MapInterface : MonoBehaviour
     }
 
 
-    public  void OnDestroyTower()
+    public void OnDestroyTower()
     {
+        if (gameFinished)
+            return;
         Debug.Log("Destroy tower");
         var slotsWithTower = Slots.Where(s => !s.IsEmpty);
         if (slotsWithTower.Any())
         {
             var randomSlot = random.Next(0, slotsWithTower.Count());
             slotsWithTower.ElementAt(randomSlot).DestroyTower();
+            ShowTowerLost();
+            PlayAlarm();
         }
         else
             OnEggStolen();
@@ -362,24 +398,73 @@ public class MapInterface : MonoBehaviour
 
     public void OnEggStolen()
     {
+        if (gameFinished)
+            return;
+
         Debug.Log($"Stole egg Total{MapState.EggsTotal}, Subs {1}");
         SubstractEggs(1);
         if (MapState.EggsTotal <= 0)
         {
             EggDisplay.UpdateValue(0);
-            //Lose
-            //Przelicz wynik
 
-            //Idz do wynikow
-            //Koniec Gry
-            Application.Quit();
+            Defeat();
         }
         else
         {
             //TODO: jakis dzwiek albo komunikat
+            ShowEggLost();
+            PlayAlarm();
         }
 
         Debug.Log($"AfterStole Total{MapState.EggsTotal}");
+    }
+
+    void PlayAlarm()
+    {
+        audioSource.PlayOneShot(alarm);
+    }
+
+    void ShowEggLost()
+    {
+        UIEggLost.SetActive(true);
+        StartCoroutine(DisableUIEggLost(3));
+    }
+    void ShowTowerLost()
+    {
+        UITowerLost.SetActive(true);
+        StartCoroutine(DisableUITowerLost(3));
+    }
+
+    public IEnumerator DisableUIEggLost(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UIEggLost.SetActive(false);
+    }
+    public IEnumerator DisableUITowerLost(int delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UITowerLost.SetActive(false);
+    }
+
+    void Victory()
+    {
+        gameFinished = true;
+        UIVictoryScreen.SetActive(true);
+        UIVictoryScore.gameObject.SetActive(true);
+        UIVictoryScore.UpdateValue((Score + CurrentWave.Score).ToString());
+        UIVScore.text = (Score + CurrentWave.Score).ToString();
+        audioSource.PlayOneShot(victoryClip);
+    }
+
+
+    void Defeat()
+    {
+        gameFinished = true;
+        UIDefeatScreen.SetActive(true);
+        UIDefeatScore.gameObject.SetActive(true);
+        UIDefeatScore.UpdateValue((Score + CurrentWave.Score).ToString());
+        UIDScore.text = (Score + CurrentWave.Score).ToString();
+        audioSource.PlayOneShot(defeatClip);
     }
 
 }
