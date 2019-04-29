@@ -8,6 +8,9 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     public EnemyInfo Info;
 
+    [SerializeField]
+    Transform EggAttachment;
+
     public float CurrentHp;
     public bool IsDead;
 
