@@ -2216,7 +2216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3314400964871617772
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5050,14 +5050,14 @@ MonoBehaviour:
     TowerPrefab: {fileID: 478454746937409619, guid: 2127c958517f0634e8859b9d9f00d841,
       type: 3}
     Name: Egg Generator
-    Desc: Generate 1 egg per generator at the end of round
+    Desc: Generate 2 egg per generator at the end of round
   - TowerType: 7
     Price: 1
     TowerPlacementPreviewPrefab: {fileID: 0}
     TowerPrefab: {fileID: 478454746937409619, guid: 2582d5a89cf91334cb08baf63f7f7471,
       type: 3}
     Name: Hen Warrior
-    Desc: Melee warrior (5 Dmg)
+    Desc: Melee warrior (2 Dmg)
   - TowerType: 4
     Price: 3
     TowerPlacementPreviewPrefab: {fileID: 478454746937409619, guid: 2e5272e4ad897fa4db999f17aa22e6f7,
@@ -5065,7 +5065,7 @@ MonoBehaviour:
     TowerPrefab: {fileID: 4612405325508056751, guid: ba61bf99d0e88494e882666fe34530bc,
       type: 3}
     Name: Pooping Hen
-    Desc: Fast attacking long range warrior (1 Dmg)
+    Desc: Fast attacking long range warrior (0.8 Dmg)
   EnemyConfiguration:
   - EnemyType: 0
     EnemyPrefab: {fileID: 4126800735455838933, guid: a130ff75c22a68f48a955e9754044c19,
@@ -5076,7 +5076,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   MapState:
-    EggsTotal: 5
+    EggsTotal: 8
   EnemyGroupingObject: {fileID: 0}
   audioSource: {fileID: 1597023197086883507}
   alarm: {fileID: 8300000, guid: b87dc917ccd8b034b997cd8ccfdf69b7, type: 3}

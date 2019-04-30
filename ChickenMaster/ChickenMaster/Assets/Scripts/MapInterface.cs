@@ -252,6 +252,9 @@ public class MapInterface : MonoBehaviour
 
     public void NextWave()
     {
+        if (gameFinished)
+            return;
+
         if (CurrentWave.Index >= WaveConfiguration.Length - 1)
         {
             //Koniec gry
@@ -269,6 +272,10 @@ public class MapInterface : MonoBehaviour
                 StartCoroutine(StartBeforeWaveTimer("Round starts in:", timeBeforeWaveStarts));
             StartCoroutine(StartWaveTimer("Round time:", nextWaveIndex, timeBeforeWaveStarts));
             StartCoroutine(StartSpawning(timeBeforeWaveStarts));
+
+            var eggGenerators = Slots.Where(s => !s.IsEmpty && s.Type == TowerTypes.Kura_Nioska);
+            AddEgg(eggGenerators.Count()*2);
+            AddEgg(1);
         }
     }
 

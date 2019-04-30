@@ -66,7 +66,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -361743055
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5dabc330a1b59c448f90d5b46fd8853, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -175,7 +175,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -816801013
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -1819451232162019255, guid: d8b018aee6c844142b8f7c9c44627118,
     type: 3}
@@ -262,13 +262,14 @@ MonoBehaviour:
   AttackSpeed: 0.8
   Damage:
     DamageType: 1
-    DamageValue: 5
+    DamageValue: 2
     HitPrefab: {fileID: 1559297642709504414, guid: 40a686f6dbb772540995be515388a784,
       type: 3}
   AttackType: 0
   ProjectileSource: {fileID: 0}
   MeleeHitSource: {fileID: 4232671854175619334}
   ProjectilePrefab: {fileID: 0}
+  ProjectileSpeed: 0
 --- !u!1 &6265820294145484324
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,7 +369,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -816801013
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: -6891764030975716313, guid: d8b018aee6c844142b8f7c9c44627118,
     type: 3}
@@ -389,11 +390,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 549950076299819189}
     m_Modifications:
-    - target: {fileID: 7098162168230976537, guid: 71ac98082afb9a146980204dec0eea6e,
-        type: 3}
-      propertyPath: m_Name
-      value: HenWarriorRange
-      objectReference: {fileID: 0}
     - target: {fileID: 1149593714556404625, guid: 71ac98082afb9a146980204dec0eea6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -448,6 +444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098162168230976537, guid: 71ac98082afb9a146980204dec0eea6e,
+        type: 3}
+      propertyPath: m_Name
+      value: HenWarriorRange
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71ac98082afb9a146980204dec0eea6e, type: 3}

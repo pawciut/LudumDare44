@@ -15,7 +15,7 @@ public class TowerSlot : MonoBehaviour
 
     [SerializeField]
     public int Id;
-    TowerTypes Type;
+    public TowerTypes Type;
     GameObject Tower;
     TowerState TowerState;
 
@@ -39,6 +39,7 @@ public class TowerSlot : MonoBehaviour
 
     public void PlaceTower(TowerPlacementInfo towerInfo)
     {
+        Type = towerInfo.TowerType;
         Tower = Instantiate(towerInfo.TowerPrefab, transform.position, Quaternion.identity);
         TowerState = Tower.GetComponent<TowerState>();
         IsEmpty = false;
@@ -84,6 +85,7 @@ public class TowerSlot : MonoBehaviour
         var explosion = Instantiate(TowerExplosionPrefab, transform.position, Quaternion.identity);
         GameObject.Destroy(explosion, 1.5f);
         TowerState = null;
+        Type = TowerTypes.Unknown;
         IsEmpty = true;
     }
 }

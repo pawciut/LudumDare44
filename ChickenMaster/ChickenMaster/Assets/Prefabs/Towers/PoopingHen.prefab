@@ -66,7 +66,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -361743055
-  m_SortingLayer: -2
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d5dabc330a1b59c448f90d5b46fd8853, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -162,7 +162,7 @@ MonoBehaviour:
   AttackSpeed: 0.2
   Damage:
     DamageType: 0
-    DamageValue: 1
+    DamageValue: 0.8
     HitPrefab: {fileID: 1559297642709504414, guid: 40a686f6dbb772540995be515388a784,
       type: 3}
   AttackType: 1
@@ -269,7 +269,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -816801013
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 176304107798042714, guid: 025c9e451f53d58448f1005dd1039562, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -289,11 +289,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 549950076299819189}
     m_Modifications:
-    - target: {fileID: 7098162168230976537, guid: fc85a370998f1464a9c74c735aa92ed9,
-        type: 3}
-      propertyPath: m_Name
-      value: Pooping Hen Range
-      objectReference: {fileID: 0}
     - target: {fileID: 1149593714556404625, guid: fc85a370998f1464a9c74c735aa92ed9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -348,6 +343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7098162168230976537, guid: fc85a370998f1464a9c74c735aa92ed9,
+        type: 3}
+      propertyPath: m_Name
+      value: Pooping Hen Range
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc85a370998f1464a9c74c735aa92ed9, type: 3}
